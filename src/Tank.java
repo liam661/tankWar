@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.util.Collections;
 
 /**
  * @Description
@@ -14,10 +13,13 @@ public class Tank {
 
     private boolean moving = false;
 
-    public Tank(int x, int y, Dir dir) {
+    private TankFrame tf;
+
+    public Tank(int x, int y, Dir dir, TankFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
+        this.tf = tf;
     }
 
     public Dir getDir() {
@@ -62,5 +64,9 @@ public class Tank {
             default:
                 break;
         }
+    }
+
+    public void fire() {
+        tf.b = new Bullet(this.x, this.y, this.dir);
     }
 }
