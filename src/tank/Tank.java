@@ -1,3 +1,5 @@
+package tank;
+
 import java.awt.*;
 
 /**

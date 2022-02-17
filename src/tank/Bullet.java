@@ -1,3 +1,5 @@
+package tank;
+
 import java.awt.*;
 
 /**
@@ -51,9 +53,8 @@ public class Bullet {
         }
         if(x < 0 || y < 0 ||
                 x > TankFrame.GAME_WIDTH
-                || y > TankFrame.GAME_HEIGHT){
+                || y > TankFrame.GAME_HEIGHT) {
             live = false;
-
         }
     }
 }

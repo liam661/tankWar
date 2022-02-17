@@ -1,3 +1,5 @@
+package tank;
+
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -14,12 +16,12 @@ import java.util.List;
  **/
 public class TankFrame extends Frame {
     Tank myTank = new Tank(200, 200, Dir.DOWN, this);
-    //Bullet b = new Bullet(300,300,Dir.DOWN);
+    //tank.Bullet b = new tank.Bullet(300,300,tank.Dir.DOWN);
     List<Bullet> bullets = new ArrayList<Bullet>();
     static final int GAME_WIDTH = 800;
     static final int GAME_HEIGHT = 600;
 
-    public TankFrame(){
+    public TankFrame() {
         setSize(GAME_WIDTH, GAME_HEIGHT);
         setResizable(false);
         setTitle("tank war");
@@ -62,7 +64,7 @@ public class TankFrame extends Frame {
         }
     }
 
-    class MyKeyListener extends KeyAdapter{
+    class MyKeyListener extends KeyAdapter {
         boolean bL = false;
         boolean bU = false;
         boolean bR = false;
