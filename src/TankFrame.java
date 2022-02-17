@@ -10,10 +10,7 @@ import java.awt.event.WindowEvent;
  * @Date 2022/2/17 11:53
  **/
 public class TankFrame extends Frame {
-    int x = 200;
-    int y = 200;
-    Dir dir = Dir.DOWN;
-    final static int SPEED = 10;
+    Tank myTank = new Tank(200, 200, Dir.DOWN);
 
     public TankFrame(){
         setSize(800, 600);
@@ -21,7 +18,6 @@ public class TankFrame extends Frame {
         setTitle("tank war");
         setVisible(true);
         this.addKeyListener(new MyKeyListener());
-
         //匿名内部类
         addWindowListener(new WindowAdapter() {
             @Override
@@ -33,23 +29,7 @@ public class TankFrame extends Frame {
 
     @Override
     public void paint(Graphics g) {
-        g.fillRect(x,y,50,50);
-        switch (dir){
-            case LEFT:
-                x -= SPEED;
-                break;
-            case UP:
-                y -= SPEED;
-                break;
-            case RIGHT:
-                x += SPEED;
-                break;
-            case DOWN:
-                y += SPEED;
-                break;
-            default:
-                break;
-        }
+        myTank.paint(g);
     }
 
     class MyKeyListener extends KeyAdapter{
@@ -103,11 +83,11 @@ public class TankFrame extends Frame {
             setMainTankDir();
         }
 
-        private void setMainTankDir(){
-            if(bL) dir = Dir.LEFT;
-            if(bU) dir = Dir.UP;
-            if(bD) dir = Dir.DOWN;
-            if(bR) dir = Dir.RIGHT;
+        private void setMainTankDir() {
+            if(bL) myTank.setDir(Dir.LEFT);
+            if(bU) myTank.setDir(Dir.UP);
+            if(bD) myTank.setDir(Dir.DOWN);
+            if(bR) myTank.setDir(Dir.RIGHT);
         }
     }
 }
