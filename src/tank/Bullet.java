@@ -14,12 +14,24 @@ public class Bullet {
     private int x,y;
     private Dir dir;
     private boolean living = true;
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+
+    private Group group = Group.BAD;
+
     TankFrame tf = null;
-    public Bullet(int x, int y, Dir dir, TankFrame tankFrame){
+    public Bullet(int x, int y, Dir dir, TankFrame tankFrame,Group group){
         this.x = x;
         this.y = y;
         this.dir = dir;
         this.tf = tankFrame;
+        this.group = group;
     }
 
     public void paint(Graphics g){
@@ -70,9 +82,11 @@ public class Bullet {
         this.living = false;
     }
     public void collideWith(Tank tank) {
+        if(this.group == tank.getGroup()) return;
+        //todo : 用一个react来记录子弹的位置 子弹类和坦克类都加一个属性
         Rectangle rect1 = new Rectangle(this.x, this.y, WIDTH, HEIGHT);// 矩形
         Rectangle rect2 = new Rectangle(tank.getX(), tank.getY(), Tank.WIDTH, Tank.HEIGHT);
-        if(rect1.intersects(rect2)){
+        if(rect1.intersects(rect2)) {
             this.die();
             tank.die();
         }
