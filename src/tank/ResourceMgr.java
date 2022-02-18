@@ -11,6 +11,8 @@ import java.awt.image.BufferedImage;
 public class ResourceMgr {
     public static BufferedImage tankL, tankU,tankR,tankD;
     public static BufferedImage bulletL,bulletU,bulletR,bulletD;
+    public static BufferedImage [] explodes = new BufferedImage[16];
+
     static {
         try {
             tankL = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("tankL.gif"));
@@ -21,6 +23,11 @@ public class ResourceMgr {
             bulletU = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("bulletU.gif"));
             bulletR = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("bulletR.gif"));
             bulletD = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("bulletD.gif"));
+            for(int i = 0;i < 16;i++){
+                explodes[i] =  ImageIO.read(ResourceMgr.class.getClassLoader()
+                        .getResourceAsStream("e"+(i+1)+".gif"));
+
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

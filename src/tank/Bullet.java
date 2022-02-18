@@ -78,9 +78,11 @@ public class Bullet {
             living = false;
         }
     }
-    public void die(){
+
+    public void die() {
         this.living = false;
     }
+
     public void collideWith(Tank tank) {
         if(this.group == tank.getGroup()) return;
         //todo : 用一个react来记录子弹的位置 子弹类和坦克类都加一个属性
