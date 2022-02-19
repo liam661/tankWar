@@ -114,6 +114,15 @@ public class Tank {
         if(this.group == Group.BAD && random.nextInt(100) > 95){
             randomDir();
         }
+        boundsCheck();
+    }
+
+    // 边界监测
+    private void boundsCheck() {
+        if(this.x < 0) x = 2;
+        else if(this.y < 30) y = 28;
+        else if(this.x > TankFrame.GAME_HEIGHT - Tank.WIDTH - 2) x = TankFrame.GAME_WIDTH - Tank.WIDTH;
+        if(this.y > TankFrame.GAME_HEIGHT - Tank.HEIGHT - 2) y = TankFrame.GAME_HEIGHT - Tank.HEIGHT;
     }
 
     private void randomDir() {
