@@ -8,12 +8,12 @@ package tank;
 public class Main {
     public static void main(String[] args) throws InterruptedException{
         TankFrame tf = new TankFrame();
-        //
-        for(int i = 0; i < 5; i++){
+        int initTankCount = Integer.parseInt((String) PropertyMgr.get("initTankCount"));
+        for(int i = 0; i < initTankCount; i++) {
             tf.tanks.add(new Tank(50 + i * 70, 200, Dir.DOWN, tf, Group.BAD));
         }
 
-        while (true){
+        while (true) {
             Thread.sleep(50);
             tf.repaint();
         }
