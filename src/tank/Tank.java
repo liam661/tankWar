@@ -20,6 +20,7 @@ public class Tank {
     private boolean moving = true;
     private boolean living = true;
     private TankFrame tf;
+    Rectangle rect = new Rectangle();
 
     public Group getGroup() {
         return group;
@@ -35,6 +36,10 @@ public class Tank {
         this.dir = dir;
         this.tf = tf;
         this.group = group;
+        rect.x = this.x;
+        rect.y = this.y;
+        rect.width = WIDTH;
+        rect.height = HEIGHT;
     }
 
     public Dir getDir() {
@@ -115,6 +120,9 @@ public class Tank {
             randomDir();
         }
         boundsCheck();
+        // 更新rect 的值
+        rect.x = this.x;
+        rect.y = this.y;
     }
 
     // 边界监测

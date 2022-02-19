@@ -11,6 +11,8 @@ public class Bullet {
     private static final int SPEED = 10;
     public static final int WIDTH = ResourceMgr.bulletD.getWidth();
     public static final int HEIGHT = ResourceMgr.bulletD.getHeight();
+    Rectangle rect = new Rectangle();
+
     private int x,y;
     private Dir dir;
     private boolean living = true;
@@ -32,6 +34,10 @@ public class Bullet {
         this.dir = dir;
         this.tf = tankFrame;
         this.group = group;
+        rect.x = this.x;
+        rect.y = this.y;
+        rect.width = WIDTH;
+        rect.height = HEIGHT;
     }
 
     public void paint(Graphics g){
@@ -72,6 +78,10 @@ public class Bullet {
             default:
                 break;
         }
+        // 更新rect 的值
+        rect.x = this.x;
+        rect.y = this.y;
+
         if(x < 0 || y < 0 ||
                 x > TankFrame.GAME_WIDTH
                 || y > TankFrame.GAME_HEIGHT) {
@@ -86,9 +96,7 @@ public class Bullet {
     public void collideWith(Tank tank) {
         if(this.group == tank.getGroup()) return;
         //todo : 用一个react来记录子弹的位置 子弹类和坦克类都加一个属性
-        Rectangle rect1 = new Rectangle(this.x, this.y, WIDTH, HEIGHT);// 矩形
-        Rectangle rect2 = new Rectangle(tank.getX(), tank.getY(), Tank.WIDTH, Tank.HEIGHT);
-        if(rect1.intersects(rect2)) {
+            if(this.rect.intersects(tank.rect)) {
             this.die();
             tank.die();
             int eX = tank.getX() + Tank.WIDTH / 2 - Explode.WIDTH / 2;
