@@ -24,7 +24,7 @@ public class Explode {
         new Audio("explode.wav").play();
     }
 
-    public void paint(Graphics g){
+    public void paint(Graphics g) {
         g.drawImage(ResourceMgr.explodes[step++], x, y, null);
         if(step >= ResourceMgr.explodes.length) {
             tf.explodes.remove(this);
